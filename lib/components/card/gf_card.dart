@@ -115,7 +115,7 @@ class GFCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final CardTheme cardTheme = CardTheme.of(context);
+    // final CardTheme cardTheme = CardTheme.of(context);
 
     final Widget cardChild = Padding(
       padding: padding,
@@ -148,7 +148,7 @@ class GFCard extends StatelessWidget {
     final Widget overlayImage = GFImageOverlay(
       width: MediaQuery.of(context).size.width,
       child: cardChild,
-      color: color ?? cardTheme.color ?? Theme.of(context).cardColor,
+      color: color ?? Theme.of(context).cardColor,
       image: imageOverlay,
       boxFit: boxFit,
       colorFilter: colorFilter,
@@ -158,7 +158,7 @@ class GFCard extends StatelessWidget {
 
     return Container(
       height: height,
-      margin: margin ?? cardTheme.margin ?? const EdgeInsets.all(16),
+      margin: margin ?? const EdgeInsets.all(16),
       decoration: gradient != null
           ? BoxDecoration(
               gradient: gradient,
@@ -169,16 +169,14 @@ class GFCard extends StatelessWidget {
       child: gradient == null
           ? Material(
               type: MaterialType.card,
-              color: color ?? cardTheme.color ?? Theme.of(context).cardColor,
-              elevation: elevation ?? cardTheme.elevation ?? _defaultElevation,
+              color: color ?? Theme.of(context).cardColor,
+              elevation: elevation ?? _defaultElevation,
               shape: shape ??
-                  cardTheme.shape ??
                   const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(4)),
                   ),
               borderOnForeground: borderOnForeground,
               clipBehavior: clipBehavior ??
-                  cardTheme.clipBehavior ??
                   _defaultClipBehavior,
               child: showOverlayImage == false ? cardChild : overlayImage,
             )
